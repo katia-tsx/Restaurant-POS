@@ -1,5 +1,5 @@
 """Security helpers.
-Author: Katia
+Author: Josber
 Version: 1.0.0
 """
 import hashlib

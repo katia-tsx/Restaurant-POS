@@ -11,6 +11,14 @@ class PaymentCreate(BaseModel):
     received_amount: Decimal | None = None
     processed_by_id: int
 
+
+class PaymentUpdate(BaseModel):
+    method: str | None = None
+    received_amount: Decimal | None = None
+    processed_by_id: int | None = None
+    is_voided: bool | None = None
+    is_active: bool | None = None
+
 class PaymentOut(BaseModel):
     id: int
     order_id: int

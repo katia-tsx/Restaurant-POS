@@ -1,5 +1,5 @@
 """Custom HTTP exceptions.
-Author: Katia
+Author: Josber
 Version: 1.0.0
 """
 from fastapi import HTTPException

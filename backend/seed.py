@@ -98,7 +98,7 @@ async def seed() -> None:
             db.add(item)
             menu_items.append(item)
 
-        capacities = [2, 4, 4, 6, 6, 2, 4, 8, 4, 2, 10, 6, 4, 4, 2, 8]
+        capacities = [2, 4, 6, 4, 8]
         for idx, cap in enumerate(capacities, start=1):
             db.add(RestaurantTable(number=idx, capacity=cap, status="available", location=random.choice(["Interior", "Terraza", "Bar"])))
 
@@ -109,7 +109,7 @@ async def seed() -> None:
 
         for _ in range(180):
             order = Order(
-                table_id=random.randint(1, len(capacities)),
+                table_id=random.randint(1, 5),
                 waiter_id=waiter.id,
                 status=random.choice(["pending", "in_kitchen", "ready", "delivered", "paid"]),
                 order_type=random.choice(["dine_in", "takeaway", "delivery"]),

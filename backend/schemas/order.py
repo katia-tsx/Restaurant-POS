@@ -2,6 +2,7 @@
 Author: Kevin
 Version: 1.0.0
 """
+from datetime import datetime
 from decimal import Decimal
 from pydantic import BaseModel, ConfigDict
 
@@ -17,6 +18,16 @@ class OrderCreate(BaseModel):
     notes: str | None = None
     items: list[OrderItemCreate]
 
+
+class OrderUpdate(BaseModel):
+    table_id: int | None = None
+    waiter_id: int | None = None
+    status: str | None = None
+    order_type: str | None = None
+    notes: str | None = None
+    items: list[OrderItemCreate] | None = None
+    is_active: bool | None = None
+
 class OrderOut(BaseModel):
     id: int
     table_id: int | None
@@ -27,4 +38,19 @@ class OrderOut(BaseModel):
     subtotal: Decimal
     tax: Decimal
     total: Decimal
+    created_at: datetime | None = None
     model_config = ConfigDict(from_attributes=True)
+
+
+class OrderLineOut(BaseModel):
+    id: int
+    menu_item_id: int
+    menu_item_name: str
+    quantity: int
+    unit_price: Decimal
+    notes: str | None
+    model_config = ConfigDict(from_attributes=True)
+
+
+class OrderDetailOut(OrderOut):
+    items: list[OrderLineOut]

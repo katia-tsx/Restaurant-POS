@@ -1,5 +1,5 @@
 """Sistema de permisos por rol.
-Autor: Katia
+Autor: Josber
 Versión: 1.0.0
 """
 from enum import Enum
